@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogendra Singh Gurjar — Senior Software Engineer Lead</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F3F5FA;
+    --bg-panel: rgba(255,255,255,0.62);
+    --bg-panel-solid: #FFFFFF;
+    --ink: #12172B;
+    --ink-soft: #4B5570;
+    --line: #D9DFEC;
+    --line-strong: #AFB9D3;
+    --accent: #6C4CF1;
+    --accent2: #0FA9B8;
+    --glow: rgba(108,76,241,0.20);
+    --font-display: 'Unbounded', 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --font-sans: 'IBM Plex Sans', -apple-system, Segoe UI, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #060A16;
+      --bg-panel: rgba(18,24,45,0.55);
+      --bg-panel-solid: #0D1326;
+      --ink: #EAF0FF;
+      --ink-soft: #92A0C4;
+      --line: rgba(255,255,255,0.09);
+      --line-strong: rgba(255,255,255,0.2);
+      --accent: #8C7CFF;
+      --accent2: #34E4F0;
+      --glow: rgba(140,124,255,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg: #060A16;
+    --bg-panel: rgba(18,24,45,0.55);
+    --bg-panel-solid: #0D1326;
+    --ink: #EAF0FF;
+    --ink-soft: #92A0C4;
+    --line: rgba(255,255,255,0.09);
+    --line-strong: rgba(255,255,255,0.2);
+    --accent: #8C7CFF;
+    --accent2: #34E4F0;
+    --glow: rgba(140,124,255,0.35);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--font-sans); line-height:1.6;
+    transition: background .3s ease, color .3s ease;
+  }
+  a{ color:inherit; }
+  .wrap{ max-width:1440px; width:100%; margin:0 auto; padding:0 clamp(20px, 4vw, 56px); }
+  .grad-text{
+    background:linear-gradient(90deg,var(--accent2),var(--accent));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+
+  /* ============ Nav ============ */
+  header.nav{
+    position:sticky; top:0; z-index:80;
+    background:color-mix(in srgb, var(--bg) 78%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1440px; margin:0 auto; padding:14px clamp(20px, 4vw, 56px);
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:var(--font-mono); font-size:12.5px;
+  }
+  .nav-name{ font-family:var(--font-display); font-weight:600; font-size:13.5px; letter-spacing:0.01em; }
+  .nav-links{ display:flex; gap:20px; align-items:center; }
+  .nav-links button.navlink{
+    background:none; border:none; cursor:pointer; font-family:var(--font-mono); font-size:12.5px;
+    color:var(--ink-soft); padding:4px 2px; border-bottom:1px solid transparent;
+  }
+  .nav-links button.navlink:hover{ color:var(--ink); }
+  .nav-links button.navlink[aria-current="page"]{ color:var(--accent2); border-color:var(--accent2); }
+  .theme-toggle{
+    display:flex; align-items:center; justify-content:center;
+    width:32px; height:32px; border-radius:50%; border:1px solid var(--line-strong);
+    background:var(--bg-panel); cursor:pointer; font-size:14px;
+  }
+  .nav-burger{ display:none; background:none; border:1px solid var(--line-strong); color:var(--ink); width:34px; height:34px; border-radius:8px; cursor:pointer; }
+
+  /* ============ Pages ============ */
+  .page{ display:none; }
+  .page.active{ display:block; animation: pageIn .55s ease; }
+  @keyframes pageIn{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:none; } }
+  @media (prefers-reduced-motion: reduce){ .page.active{ animation:none; } }
+
+  section.block{ padding:60px 0; }
+  .section-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:30px; }
+  .section-num{ font-family:var(--font-mono); font-size:12px; color:var(--accent2); }
+  h2.section-title{ font-family:var(--font-display); font-weight:600; font-size:26px; margin:0; }
+  p.section-intro{ color:var(--ink-soft); max-width:60ch; margin:-14px 0 30px; }
+
+  /* ============ Home / hero ============ */
+  .hero{ padding:70px 0 40px; position:relative; }
+  .hero-canvas-wrap{ position:relative; border-radius:20px; overflow:hidden; border:1px solid var(--line); background:var(--bg-panel); }
+  canvas#netcanvas{ display:block; width:100%; height:320px; }
+  .hero-overlay{
+    position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center;
+    padding:40px; background:linear-gradient(180deg, color-mix(in srgb, var(--bg) 30%, transparent), color-mix(in srgb, var(--bg) 72%, transparent) 85%);
+  }
+  .tag-line{ font-family:var(--font-mono); font-size:12.5px; color:var(--accent2); letter-spacing:0.03em; margin:0 0 16px; }
+  h1.headline{
+    font-family:var(--font-display); font-weight:600; font-size:clamp(30px,4.6vw,46px);
+    line-height:1.16; margin:0 0 18px; max-width:22ch;
+  }
+  .hero p.lede{ font-size:16.5px; color:var(--ink-soft); max-width:54ch; margin:0 0 26px; }
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    font-family:var(--font-mono); font-size:12.5px; padding:12px 20px; border-radius:10px;
+    border:1px solid var(--line-strong); text-decoration:none; display:inline-block; cursor:pointer;
+    transition: box-shadow .2s ease, transform .2s ease, background .2s ease, color .2s ease;
+  }
+  .btn-solid{ background:linear-gradient(90deg,var(--accent),var(--accent2)); border-color:transparent; color:#05070C; font-weight:600; }
+  .btn-solid:hover{ box-shadow:0 0 24px var(--glow); transform:translateY(-1px); }
+  .btn-ghost{ color:var(--ink); background:var(--bg-panel); }
+  .btn-ghost:hover{ border-color:var(--accent2); color:var(--accent2); }
+
+  .stat-strip{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:36px; perspective:800px; }
+  .stat{ border:1px solid var(--line); border-radius:12px; padding:18px 14px; background:var(--bg-panel); text-align:center; }
+  .stat .num{ font-family:var(--font-display); font-size:24px; font-weight:600; }
+  .stat .label{ font-family:var(--font-mono); font-size:11px; color:var(--ink-soft); margin-top:4px; }
+
+  /* ============ Profile page ============ */
+  .profile-intro{ max-width:66ch; color:var(--ink-soft); font-size:15.5px; margin-bottom:36px; }
+  .profile-intro strong{ color:var(--ink); font-weight:600; }
+
+  .role-explorer{ display:grid; grid-template-columns:220px 1fr; gap:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:var(--bg-panel); }
+  .role-nav{ border-right:1px solid var(--line); padding:8px; }
+  .role-node{
+    display:flex; align-items:center; gap:10px; width:100%; text-align:left; background:none; border:none;
+    padding:14px 12px; cursor:pointer; font-family:var(--font-mono); font-size:12.5px; color:var(--ink-soft);
+    border-radius:10px; position:relative;
+  }
+  .role-node .dot{ width:8px; height:8px; border-radius:50%; border:1.5px solid var(--line-strong); flex-shrink:0; transition:.2s; }
+  .role-node[aria-selected="true"]{ color:var(--ink); background:color-mix(in srgb, var(--accent) 12%, transparent); }
+  .role-node[aria-selected="true"] .dot{ background:var(--accent2); border-color:var(--accent2); box-shadow:0 0 10px var(--glow); }
+  .role-panels{ padding:28px 30px; min-height:320px; }
+  .role-panel{ display:none; }
+  .role-panel.active{ display:block; animation: fadeSlide .4s ease; }
+  @keyframes fadeSlide{ from{ opacity:0; transform:translateX(8px);} to{ opacity:1; transform:none; } }
+  .role-title{ font-family:var(--font-display); font-size:19px; font-weight:600; margin:0 0 4px; }
+  .role-company{ color:var(--accent2); font-family:var(--font-mono); font-size:12.5px; }
+  .role-meta{ font-family:var(--font-mono); font-size:11.5px; color:var(--ink-soft); margin:6px 0 16px; }
+  .role-panel ul{ margin:0; padding-left:18px; color:var(--ink-soft); font-size:14.5px; }
+  .role-panel li{ margin-bottom:8px; }
+
+  .skills-cluster{ margin-top:40px; }
+  .skills-cluster h3{ font-family:var(--font-mono); font-size:12px; color:var(--ink-soft); margin-bottom:14px; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:9px; }
+  .chip{
+    font-family:var(--font-mono); font-size:12px; padding:7px 13px; border-radius:20px;
+    border:1px solid var(--line-strong); background:var(--bg-panel);
+    animation: floaty 5s ease-in-out infinite;
+  }
+  .chip:nth-child(3n){ animation-delay:.6s; }
+  .chip:nth-child(4n){ animation-delay:1.2s; }
+  .chip:nth-child(5n){ animation-delay:1.8s; }
+  @keyframes floaty{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-3px);} }
+  @media (prefers-reduced-motion: reduce){ .chip{ animation:none; } }
+
+  .edu-card{ margin-top:36px; border:1px solid var(--line); border-radius:14px; padding:20px 22px; background:var(--bg-panel); font-size:14px; color:var(--ink-soft); }
+  .edu-card strong{ color:var(--ink); font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.02em; }
+
+  /* ============ Sessions ============ */
+  .sessions-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:26px; perspective:900px; }
+  .session-card{ border:1px solid var(--line); border-radius:16px; padding:24px 20px; background:var(--bg-panel); display:flex; flex-direction:column; transition: box-shadow .2s; }
+  .session-card:hover{ box-shadow:0 0 30px var(--glow); }
+  .session-card h3{ font-family:var(--font-display); font-size:18px; font-weight:600; margin:0 0 8px; }
+  .session-card .price{ font-family:var(--font-mono); font-size:12.5px; color:var(--accent2); margin-bottom:12px; }
+  .session-card p{ font-size:13.5px; color:var(--ink-soft); flex-grow:1; margin:0 0 18px; }
+  .session-card .btn{ text-align:center; }
+  .sessions-note{ font-family:var(--font-mono); font-size:12px; color:var(--ink-soft); border-left:2px solid var(--accent); padding:10px 16px; border-radius:0 10px 10px 0; background:var(--bg-panel); }
+
+  /* ============ Writing ============ */
+  .posts{ display:flex; flex-direction:column; perspective:1000px; }
+  .post{ padding:22px 0; border-top:1px solid var(--line); display:grid; grid-template-columns:110px 1fr; gap:20px; }
+  .post:first-child{ border-top:none; }
+  .post-date{ font-family:var(--font-mono); font-size:11.5px; color:var(--ink-soft); padding-top:4px; }
+  .post h3{ font-family:var(--font-display); font-weight:600; font-size:18px; margin:0 0 8px; }
+  .post p{ color:var(--ink-soft); font-size:14px; margin:0 0 10px; }
+  .post a.read{ font-family:var(--font-mono); font-size:12px; color:var(--accent2); text-decoration:none; }
+  .post a.read:hover{ text-decoration:underline; }
+
+  /* ============ Interview prep ============ */
+  details.qcat{ border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin-bottom:12px; background:var(--bg-panel); }
+  details.qcat summary{ cursor:pointer; font-family:var(--font-display); font-size:16.5px; font-weight:600; list-style:none; display:flex; justify-content:space-between; align-items:center; }
+  details.qcat summary::-webkit-details-marker{ display:none; }
+  details.qcat summary::after{ content:"+"; font-family:var(--font-mono); color:var(--accent2); font-size:17px; }
+  details.qcat[open] summary::after{ content:"–"; }
+  details.qcat ol{ margin:14px 0 0; padding-left:20px; color:var(--ink-soft); font-size:14.5px; }
+  details.qcat li{ margin-bottom:9px; }
+
+  /* ============ Contact ============ */
+  .contact-card{ border:1px solid var(--line); border-radius:16px; padding:36px; background:var(--bg-panel); }
+  .contact-card h2{ font-family:var(--font-display); font-size:26px; font-weight:600; margin:0 0 16px; }
+  .contact-links{ display:flex; flex-direction:column; gap:10px; font-family:var(--font-mono); font-size:14px; }
+  .contact-links a{ text-decoration:none; color:var(--ink-soft); }
+  .contact-links a:hover{ color:var(--accent2); }
+
+  footer.sitefoot{ padding:30px 0 60px; font-family:var(--font-mono); font-size:11.5px; color:var(--ink-soft); text-align:center; }
+
+  @media (max-width:760px){
+    .stat-strip{ grid-template-columns:repeat(2,1fr); }
+    .role-explorer{ grid-template-columns:1fr; }
+    .role-nav{ border-right:none; border-bottom:1px solid var(--line); display:flex; overflow-x:auto; }
+    .sessions-grid{ grid-template-columns:1fr; }
+    .post{ grid-template-columns:1fr; gap:6px; }
+    .nav-links{ display:none; }
+    .nav-links.open{ display:flex; flex-direction:column; position:absolute; top:56px; left:0; right:0; background:var(--bg); border-bottom:1px solid var(--line); padding:14px 28px; gap:14px; }
+    .nav-burger{ display:inline-block; }
+  }
+
+  :focus-visible{ outline:2px solid var(--accent2); outline-offset:3px; }
+
+  /* ============ Profile animated background ============ */
+  #page-profile{ position:relative; }
+  .profile-bg-wrap{ position:absolute; top:0; left:0; right:0; height:100%; min-height:100%; z-index:0; pointer-events:none; overflow:hidden; }
+  canvas#profilecanvas{ position:absolute; top:0; left:0; width:100%; height:100%; }
+  .profile-spotlight{
+    position:absolute; inset:0; z-index:1; pointer-events:none;
+    background: radial-gradient(360px circle at var(--mx,50%) var(--my,20%), var(--glow), transparent 65%);
+    transition: background .05s linear;
+  }
+  #page-profile > section.block{ position:relative; z-index:2; }
+
+  /* ============ Writing tag filters ============ */
+  .tag-filter-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+  .tag-pill{
+    font-family:var(--font-mono); font-size:11.5px; padding:7px 14px; border-radius:20px;
+    border:1px solid var(--line-strong); background:var(--bg-panel); cursor:pointer; color:var(--ink-soft);
+  }
+  .tag-pill[aria-pressed="true"]{ color:#05070C; background:linear-gradient(90deg,var(--accent2),var(--accent)); border-color:transparent; }
+  .post-tags{ display:flex; gap:6px; margin-bottom:8px; flex-wrap:wrap; }
+  .post-tag{ font-family:var(--font-mono); font-size:10.5px; color:var(--accent2); border:1px solid var(--line); border-radius:10px; padding:2px 8px; }
+  .post-readtime{ font-family:var(--font-mono); font-size:11px; color:var(--ink-soft); }
+  .post.hidden{ display:none; }
+
+  /* ============ Interview prep controls ============ */
+  .prep-controls{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:18px; }
+  .prep-search{
+    flex:1 1 220px; font-family:var(--font-mono); font-size:13px; padding:10px 14px;
+    border:1px solid var(--line-strong); border-radius:10px; background:var(--bg-panel); color:var(--ink);
+  }
+  .prep-search::placeholder{ color:var(--ink-soft); }
+  .prep-cat-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+  .prep-toolbar{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:20px; font-family:var(--font-mono); font-size:12px; color:var(--ink-soft); }
+  .prep-toolbar label{ display:flex; align-items:center; gap:6px; cursor:pointer; }
+  .prep-progress-wrap{ flex:1 1 160px; height:8px; border-radius:6px; background:var(--line); overflow:hidden; min-width:120px; }
+  .prep-progress-bar{ height:100%; background:linear-gradient(90deg,var(--accent2),var(--accent)); width:0%; transition:width .3s ease; }
+  .qcat.cat-hidden{ display:none; }
+  .qitem{ display:flex; align-items:flex-start; gap:10px; margin-bottom:9px; }
+  .qitem.item-hidden{ display:none; }
+  .qitem input[type="checkbox"]{ margin-top:4px; accent-color:var(--accent2); }
+  .qitem label{ flex:1; }
+  .qitem.reviewed label{ color:var(--ink-soft); text-decoration:line-through; opacity:0.7; }
+  .diff-badge{ font-family:var(--font-mono); font-size:10px; padding:1px 7px; border-radius:8px; margin-left:8px; border:1px solid var(--line-strong); }
+  .diff-easy{ color:#1E9E6B; border-color:#1E9E6B; }
+  .diff-medium{ color:var(--accent); border-color:var(--accent); }
+  .diff-hard{ color:#E14B4B; border-color:#E14B4B; }
+  .qcat.flash summary{ animation: flashHi 1.2s ease; }
+  @keyframes flashHi{ 0%,100%{ color:var(--ink);} 40%{ color:var(--accent2);} }
+
+  /* ============ Sessions payment note ============ */
+  .pay-badge{ font-family:var(--font-mono); font-size:10px; color:var(--ink-soft); display:block; margin-top:8px; text-align:center; }
+  .rzp-embed{ margin-top:2px; }
+  .rzp-embed form{ display:flex; justify-content:center; }
+
+  /* ============ Card tilt ============ */
+  .tilt-card{ transform-style:preserve-3d; transition:transform .15s ease, box-shadow .15s ease; will-change:transform; }
+
+  /* ============ Auth: nav button + modal ============ */
+  .auth-btn{
+    font-family:var(--font-mono); font-size:12px; padding:8px 14px; border-radius:9px;
+    border:1px solid var(--line-strong); background:var(--bg-panel); color:var(--ink); cursor:pointer;
+  }
+  .auth-status{ display:flex; align-items:center; gap:8px; font-family:var(--font-mono); font-size:12px; }
+  .role-badge{ font-size:10px; padding:2px 9px; border-radius:10px; border:1px solid var(--accent2); color:var(--accent2); }
+  .role-badge.admin{ border-color:var(--accent); color:var(--accent); }
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(3,6,16,0.6); backdrop-filter:blur(3px);
+    display:none; align-items:center; justify-content:center; z-index:9999; padding:20px;
+  }
+  .modal-overlay.open{ display:flex; }
+  .modal-box{
+    background:var(--bg-panel-solid); border:1px solid var(--line); border-radius:16px;
+    padding:30px; max-width:380px; width:100%; box-shadow:0 20px 60px rgba(0,0,0,0.35);
+  }
+  .modal-box h3{ font-family:var(--font-display); font-size:19px; margin:0 0 6px; }
+  .modal-box p.modal-note{ font-family:var(--font-mono); font-size:11px; color:var(--ink-soft); margin:0 0 20px; }
+  .modal-field{ margin-bottom:14px; }
+  .modal-field label{ display:block; font-family:var(--font-mono); font-size:11.5px; color:var(--ink-soft); margin-bottom:6px; }
+  .modal-field input, .modal-field select{
+    width:100%; font-family:var(--font-sans); font-size:14px; padding:10px 12px;
+    border:1px solid var(--line-strong); border-radius:9px; background:var(--bg); color:var(--ink);
+  }
+  .modal-actions{ display:flex; gap:10px; margin-top:20px; }
+  .modal-actions .btn{ flex:1; text-align:center; }
+  .modal-error{ font-family:var(--font-mono); font-size:11.5px; color:#E14B4B; margin-top:8px; display:none; }
+  .modal-error.show{ display:block; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-name">J. S. Gurjar</div>
+    <nav class="nav-links" id="navLinks">
+      <button class="navlink" data-page="home">Home</button>
+      <button class="navlink" data-page="profile">Profile</button>
+      <button class="navlink" data-page="sessions">Sessions</button>
+      <button class="navlink" data-page="writing">Writing</button>
+      <button class="navlink" data-page="prep">Interview prep</button>
+      <button class="navlink" data-page="contact">Contact</button>
+    </nav>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div id="authArea">
+        <button class="auth-btn" id="signInBtn">Sign in</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">🌙</button>
+      <button class="nav-burger" id="navBurger" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="modal-overlay" id="authModal">
+  <div class="modal-box">
+    <h3>Sign in</h3>
+    <p class="modal-note">Demo role switcher only — see note in chat about what this does and doesn't do.</p>
+    <div class="modal-field">
+      <label for="authName">Name</label>
+      <input type="text" id="authName" placeholder="Your name">
+    </div>
+    <div class="modal-field">
+      <label for="authRole">Role</label>
+      <select id="authRole">
+        <option value="visitor">Visitor</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
+    <div class="modal-field" id="authPassField" style="display:none;">
+      <label for="authPass">Admin passcode</label>
+      <input type="password" id="authPass" placeholder="Enter passcode">
+    </div>
+    <div class="modal-error" id="authError">That passcode isn't right.</div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="authCancel" type="button">Cancel</button>
+      <button class="btn btn-solid" id="authSubmit" type="button">Sign in</button>
+    </div>
+  </div>
+</div>
+
+
+<main>
+
+  <!-- HOME -->
+  <section id="page-home" class="page wrap">
+    <div class="hero">
+      <div class="hero-canvas-wrap">
+        <canvas id="netcanvas"></canvas>
+        <div class="hero-overlay">
+          <p class="tag-line">Senior Software Engineer Lead — Microsoft, Hyderabad</p>
+          <h1 class="headline">Architecting the systems <span class="grad-text">agentic AI</span> runs on.</h1>
+          <p class="lede">10+ years building cloud-native, distributed, and full-stack platforms — now focused on agentic systems using MCP, RAG, and LLMs at enterprise scale.</p>
+          <div class="cta-row">
+            <button class="btn btn-solid" data-page-link="sessions">Book a 1:1 session</button>
+            <button class="btn btn-ghost" data-page-link="profile">View my profile</button>
+          </div>
+        </div>
+      </div>
+      <div class="stat-strip">
+        <div class="stat tilt-card"><div class="num" data-count="10" data-suffix="+">0</div><div class="label">Years experience</div></div>
+        <div class="stat tilt-card"><div class="num" data-count="30" data-suffix="K+">0</div><div class="label">Users reached</div></div>
+        <div class="stat tilt-card"><div class="num" data-count="99.99" data-suffix="%">0</div><div class="label">Service reliability</div></div>
+        <div class="stat tilt-card"><div class="num" data-count="80" data-suffix="%">0</div><div class="label">Faster deploys</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="page-profile" class="page wrap">
+    <div class="profile-bg-wrap"><canvas id="profilecanvas"></canvas></div>
+    <div class="profile-spotlight" id="profileSpotlight"></div>
+    <section class="block" style="padding-top:50px;">
+      <div class="section-head"><span class="section-num">01</span><h2 class="section-title">Profile</h2></div>
+      <p class="profile-intro">Senior Software Engineer and Technical Lead with <strong>10+ years</strong> architecting scalable cloud-native, distributed, and full-stack platforms. I lead engineering teams, modernize enterprise systems, and build generative AI and agentic solutions with <strong>MCP, RAG, LLMs, Azure Cognitive Services, and Azure AI Search</strong> — improving service reliability from 99% to 99.99% and cutting deployment cycles by roughly 80% along the way.</p>
+
+      <div class="role-explorer">
+        <div class="role-nav" role="tablist" aria-label="Career roles">
+          <button class="role-node" data-role="msft" role="tab" aria-selected="true"><span class="dot"></span>Microsoft — 2019 to present</button>
+          <button class="role-node" data-role="deere" role="tab" aria-selected="false"><span class="dot"></span>John Deere — 2019</button>
+          <button class="role-node" data-role="electro" role="tab" aria-selected="false"><span class="dot"></span>Electro Home — 2017–2018</button>
+          <button class="role-node" data-role="amdocs" role="tab" aria-selected="false"><span class="dot"></span>Amdocs — 2016–2019</button>
+        </div>
+        <div class="role-panels">
+          <div class="role-panel active" data-panel="msft">
+            <div class="role-title">Senior Software Engineer Lead</div>
+            <div class="role-company">Microsoft</div>
+            <div class="role-meta">Hyderabad, India — Dec 2019 to present</div>
+            <ul>
+              <li>Designed and scaled AI-native engineering capabilities — agentic workflows, MCPs, plugins, developer tools, and agent marketplaces — across 30K+ users, 7K+ repositories, and 300+ organizations.</li>
+              <li>Manage and grow a 10+ engineer team through structured planning, feedback, mentorship, and delegation.</li>
+              <li>Architected generative AI and agentic solutions using MCP, RAG, LLMs, REST APIs, and distributed services.</li>
+              <li>Built AI-readiness and repo-analysis capabilities (SDDs, reverse SDDs, AI-powered analyzers) across 7K+ repositories.</li>
+              <li>Improved service reliability from 99% to 99.99%, exceeding SLO targets.</li>
+              <li>Founded and led a security and engineering-hygiene forum across 18 teams and 42 services.</li>
+            </ul>
+          </div>
+          <div class="role-panel" data-panel="deere">
+            <div class="role-title">Lead Software Engineer</div>
+            <div class="role-company">John Deere</div>
+            <div class="role-meta">Pune, India — Jul 2019 to Nov 2019</div>
+            <ul>
+              <li>Led modernization of product workflows by designing microservices and integrating service APIs with the frontend.</li>
+              <li>Improved engineering velocity with a monorepo strategy and Redux-based state management; trained the team on microservices vs. monolithic architecture.</li>
+            </ul>
+          </div>
+          <div class="role-panel" data-panel="electro">
+            <div class="role-title">Co-Founder</div>
+            <div class="role-company">Electro Home</div>
+            <div class="role-meta">India — Dec 2017 to Feb 2018</div>
+            <ul>
+              <li>Built a scalable single-page e-commerce marketplace with React, Node.js, Express.js, and MongoDB.</li>
+              <li>Architected secure checkout and end-to-end payment integration; optimized search and product discovery.</li>
+            </ul>
+          </div>
+          <div class="role-panel" data-panel="amdocs">
+            <div class="role-title">Software Developer</div>
+            <div class="role-company">Amdocs Inc.</div>
+            <div class="role-meta">Pune, India — Jun 2016 to Jul 2019</div>
+            <ul>
+              <li>Engineered reusable React/Redux components with internationalization, deployed across multiple sales channels.</li>
+              <li>Designed load-balancing solutions and automated deployments with Ansible, cutting release time by roughly 80%.</li>
+              <li>Built and maintained RESTful APIs and Java/AEM 6.x platform components in Agile/Scrum teams.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-cluster">
+        <h3>AI & agentic systems</h3>
+        <div class="chip-row">
+          <span class="chip">Generative AI</span><span class="chip">AI Agents</span><span class="chip">Model Context Protocol</span><span class="chip">RAG</span><span class="chip">LLMs</span><span class="chip">Azure Cognitive Services</span><span class="chip">Azure AI Search</span>
+        </div>
+      </div>
+      <div class="skills-cluster">
+        <h3>Languages & frameworks</h3>
+        <div class="chip-row">
+          <span class="chip">C#</span><span class="chip">.NET</span><span class="chip">JavaScript</span><span class="chip">Java</span><span class="chip">React</span><span class="chip">React Native</span><span class="chip">Redux</span><span class="chip">Node.js</span><span class="chip">Express.js</span>
+        </div>
+      </div>
+      <div class="skills-cluster">
+        <h3>Architecture, cloud & practice</h3>
+        <div class="chip-row">
+          <span class="chip">Microservices</span><span class="chip">Distributed Systems</span><span class="chip">System Design</span><span class="chip">REST APIs</span><span class="chip">Microsoft Azure</span><span class="chip">Azure DevOps</span><span class="chip">CI/CD</span><span class="chip">Ansible</span><span class="chip">Observability</span><span class="chip">SLOs</span><span class="chip">MongoDB</span><span class="chip">Agile / Scrum</span>
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <strong>Education & awards</strong><br>
+        B.Tech, Computer Science & Engineering — National Institute of Technology (NIT), Bhopal, 2016 (CGPA 7.3/10).
+        Four Microsoft employee recognition awards for engineering impact; winner of global hackathons at Microsoft and Amdocs.
+      </div>
+    </section>
+  </section>
+
+  <!-- SESSIONS -->
+  <section id="page-sessions" class="page wrap">
+    <section class="block" style="padding-top:50px;">
+      <div class="section-head"><span class="section-num">02</span><h2 class="section-title">1:1 sessions</h2></div>
+      <p class="section-intro">Book time for a focused conversation on system design, career growth, or building with agentic AI.</p>
+      <div class="sessions-grid">
+        <div class="session-card tilt-card">
+          <h3>Career mentorship</h3>
+          <div class="price">45 min · ₹2,999</div>
+          <p>For engineers navigating promotion cases, IC-to-lead transitions, or a move into technical leadership.</p>
+          <a class="btn btn-ghost pay-btn" data-session="mentorship" href="mailto:jogendrasingh038@gmail.com?subject=1:1%20Session%20Request%20%E2%80%94%20Career%20Mentorship&body=Hi%20Jogendra%2C%0A%0AI'd%20like%20to%20book%20a%2045-minute%20career%20mentorship%20session.%0A%0AA%20bit%20about%20what%20I'd%20like%20to%20cover%3A%0A%0AA%20few%20times%20that%20work%20for%20me%3A%0A">Book this session</a>
+          <div class="rzp-embed" data-rzp-container="mentorship"></div>
+          <span class="pay-badge" data-badge="mentorship">Payment gateway not connected yet — opens an email request</span>
+        </div>
+        <div class="session-card tilt-card">
+          <h3>System design review</h3>
+          <div class="price">60 min · ₹3,999</div>
+          <p>Bring an architecture, an API contract, or a scaling problem — walk out with a concrete review.</p>
+          <a class="btn btn-ghost pay-btn" data-session="designReview" href="mailto:jogendrasingh038@gmail.com?subject=1:1%20Session%20Request%20%E2%80%94%20System%20Design%20Review&body=Hi%20Jogendra%2C%0A%0AI'd%20like%20to%20book%20a%2060-minute%20system%20design%20review.%0A%0AWhat%20I'd%20like%20reviewed%3A%0A%0AA%20few%20times%20that%20work%20for%20me%3A%0A">Book this session</a>
+          <div class="rzp-embed" data-rzp-container="designReview"></div>
+          <span class="pay-badge" data-badge="designReview">Payment gateway not connected yet — opens an email request</span>
+        </div>
+        <div class="session-card tilt-card">
+          <h3>Agentic AI consult</h3>
+          <div class="price">45 min · ₹2,999</div>
+          <p>Practical guidance on MCP, RAG pipelines, and shipping agentic features in production.</p>
+          <a class="btn btn-ghost pay-btn" data-session="aiConsult" href="mailto:jogendrasingh038@gmail.com?subject=1:1%20Session%20Request%20%E2%80%94%20Agentic%20AI%20Consult&body=Hi%20Jogendra%2C%0A%0AI'd%20like%20to%20book%20a%2045-minute%20agentic%20AI%20consult.%0A%0AWhat%20I'm%20working%20on%3A%0A%0AA%20few%20times%20that%20work%20for%20me%3A%0A">Book this session</a>
+          <div class="rzp-embed" data-rzp-container="aiConsult"></div>
+          <span class="pay-badge" data-badge="aiConsult">Payment gateway not connected yet — opens an email request</span>
+        </div>
+      </div>
+      <p class="sessions-note">Razorpay is wired in as the payment gateway — its checkout natively supports UPI (PhonePe, Google Pay, any UPI app), netbanking, wallets, and credit/debit cards in one flow, so one integration covers everything you listed. I can't create the Razorpay account itself — that needs your PAN, bank account, and identity verification, which only you can complete. Once it's set up: Dashboard → Payment Pages/Buttons → create one per session → copy its Payment Button ID → send me the three IDs and I'll drop them into <code>RAZORPAY_BUTTON_IDS</code> at the top of the page script. That swaps every "Book this session" button to a real, working checkout — no other changes needed. Until then, the buttons fall back to a prefilled email request.</p>
+    </section>
+  </section>
+
+  <!-- WRITING -->
+  <section id="page-writing" class="page wrap">
+    <section class="block" style="padding-top:50px;">
+      <div class="section-head"><span class="section-num">03</span><h2 class="section-title">Writing</h2></div>
+      <p class="section-intro">Notes on distributed systems, agentic AI, and engineering leadership. Starter posts below — replace with your own.</p>
+
+      <div class="tag-filter-row" id="tagFilterRow">
+        <button class="tag-pill" data-tag="all" aria-pressed="true">All</button>
+        <button class="tag-pill" data-tag="ai" aria-pressed="false">AI & Agentic</button>
+        <button class="tag-pill" data-tag="systems" aria-pressed="false">Systems & Reliability</button>
+        <button class="tag-pill" data-tag="leadership" aria-pressed="false">Leadership</button>
+        <button class="tag-pill" data-tag="career" aria-pressed="false">Career</button>
+      </div>
+
+      <div class="posts" id="postsList">
+        <article class="post tilt-card" data-tags="ai">
+          <div class="post-date">Draft<br><span class="post-readtime">6 min read</span></div>
+          <div>
+            <div class="post-tags"><span class="post-tag">AI & Agentic</span></div>
+            <h3>Building agentic systems with MCP</h3>
+            <p>What the Model Context Protocol actually solves, and where a RAG pipeline still earns its place next to an agent.</p>
+            <a class="read" href="#" onclick="return false;">Read the post →</a>
+          </div>
+        </article>
+        <article class="post tilt-card" data-tags="systems">
+          <div class="post-date">Draft<br><span class="post-readtime">8 min read</span></div>
+          <div>
+            <div class="post-tags"><span class="post-tag">Systems & Reliability</span></div>
+            <h3>From 99% to 99.99%: notes on reliability</h3>
+            <p>The unglamorous, mostly-process work behind closing the last gap in service reliability.</p>
+            <a class="read" href="#" onclick="return false;">Read the post →</a>
+          </div>
+        </article>
+        <article class="post tilt-card" data-tags="leadership career">
+          <div class="post-date">Draft<br><span class="post-readtime">5 min read</span></div>
+          <div>
+            <div class="post-tags"><span class="post-tag">Leadership</span><span class="post-tag">Career</span></div>
+            <h3>Moving from IC to technical lead</h3>
+            <p>What changes first when the job becomes about the team's output instead of your own.</p>
+            <a class="read" href="#" onclick="return false;">Read the post →</a>
+          </div>
+        </article>
+        <article class="post tilt-card" data-tags="ai systems">
+          <div class="post-date">Draft<br><span class="post-readtime">7 min read</span></div>
+          <div>
+            <div class="post-tags"><span class="post-tag">AI & Agentic</span><span class="post-tag">Systems & Reliability</span></div>
+            <h3>What breaks first when 7,000 repos get an AI agent</h3>
+            <p>Lessons from rolling out repo-aware agentic tooling at enterprise scale — the failure modes nobody warns you about.</p>
+            <a class="read" href="#" onclick="return false;">Read the post →</a>
+          </div>
+        </article>
+        <article class="post tilt-card" data-tags="leadership">
+          <div class="post-date">Draft<br><span class="post-readtime">6 min read</span></div>
+          <div>
+            <div class="post-tags"><span class="post-tag">Leadership</span></div>
+            <h3>Running a security forum that engineers actually show up to</h3>
+            <p>How an 18-team, 42-service hygiene forum went from mandatory checkbox to something people wanted on their calendar.</p>
+            <a class="read" href="#" onclick="return false;">Read the post →</a>
+          </div>
+        </article>
+        <article class="post tilt-card" data-tags="career systems">
+          <div class="post-date">Draft<br><span class="post-readtime">4 min read</span></div>
+          <div>
+            <div class="post-tags"><span class="post-tag">Career</span><span class="post-tag">Systems & Reliability</span></div>
+            <h3>The monorepo decision nobody wants to own</h3>
+            <p>A field guide to making — and defending — a monorepo call on a team that's never done one before.</p>
+            <a class="read" href="#" onclick="return false;">Read the post →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </section>
+
+  <!-- PREP -->
+  <section id="page-prep" class="page wrap">
+    <section class="block" style="padding-top:50px;">
+      <div class="section-head"><span class="section-num">04</span><h2 class="section-title">Interview prep</h2></div>
+      <p class="section-intro">A question bank across seven topics, with search, filtering, difficulty tags, and progress tracking. Edit freely to match your own interview loop.</p>
+
+      <div class="prep-controls">
+        <input type="text" class="prep-search" id="prepSearch" placeholder="Search questions… e.g. &quot;sharding&quot;, &quot;RAG&quot;, &quot;feedback&quot;">
+        <button class="btn btn-ghost" id="prepShuffle" type="button">🎲 Shuffle a question</button>
+        <button class="btn btn-ghost" id="prepExpandAll" type="button">Expand all</button>
+      </div>
+      <div class="prep-cat-row" id="prepCatRow">
+        <button class="tag-pill" data-cat="all" aria-pressed="true">All categories</button>
+        <button class="tag-pill" data-cat="sd" aria-pressed="false">System design</button>
+        <button class="tag-pill" data-cat="net" aria-pressed="false">.NET & C#</button>
+        <button class="tag-pill" data-cat="az" aria-pressed="false">Cloud & Azure</button>
+        <button class="tag-pill" data-cat="ai" aria-pressed="false">AI & agentic</button>
+        <button class="tag-pill" data-cat="js" aria-pressed="false">JavaScript & React</button>
+        <button class="tag-pill" data-cat="db" aria-pressed="false">Databases</button>
+        <button class="tag-pill" data-cat="lead" aria-pressed="false">Leadership</button>
+      </div>
+      <div class="prep-toolbar">
+        <label><input type="checkbox" id="prepUnreviewedOnly"> Show unreviewed only</label>
+        <div class="prep-progress-wrap"><div class="prep-progress-bar" id="prepProgressBar"></div></div>
+        <span id="prepProgressText">0 of 0 reviewed</span>
+      </div>
+
+      <div id="prepCategories">
+        <details class="qcat" data-cat="sd" open>
+          <summary>System design</summary>
+          <div class="qlist">
+            <div class="qitem" data-id="sd1"><input type="checkbox" id="cb-sd1"><label for="cb-sd1">Design a URL shortener that handles 100M requests a day. Where does it break first?<span class="diff-badge diff-medium">Medium</span></label></div>
+            <div class="qitem" data-id="sd2"><input type="checkbox" id="cb-sd2"><label for="cb-sd2">How would you design a notification system that fans out to email, SMS, and push?<span class="diff-badge diff-medium">Medium</span></label></div>
+            <div class="qitem" data-id="sd3"><input type="checkbox" id="cb-sd3"><label for="cb-sd3">Walk through how you'd shard a database that's outgrown a single instance.<span class="diff-badge diff-hard">Hard</span></label></div>
+            <div class="qitem" data-id="sd4"><input type="checkbox" id="cb-sd4"><label for="cb-sd4">What's your approach to designing an API contract before any code is written?<span class="diff-badge diff-easy">Easy</span></label></div>
+            <div class="qitem" data-id="sd5"><input type="checkbox" id="cb-sd5"><label for="cb-sd5">Design a rate limiter that works across a fleet of load-balanced servers.<span class="diff-badge diff-hard">Hard</span></label></div>
+          </div>
+        </details>
+
+        <details class="qcat" data-cat="net">
+          <summary>.NET & C#</summary>
+          <div class="qlist">
+            <div class="qitem" data-id="net1"><input type="checkbox" id="cb-net1"><label for="cb-net1">Explain the difference between a Task and a Thread, and when you'd reach for each.<span class="diff-badge diff-medium">Medium</span></label></div>
+            <div class="qitem" data-id="net2"><input type="checkbox" id="cb-net2"><label for="cb-net2">How does garbage collection in .NET handle large object heap allocations?<span class="diff-badge diff-hard">Hard</span></label></div>
+            <div class="qitem" data-id="net3"><input type="checkbox" id="cb-net3"><label for="cb-net3">What's the difference between IEnumerable and IQueryable, and why does it matter for performance?<span class="diff-badge diff-medium">Medium</span></label></div>
+            <div class="qitem" data-id="net4"><input type="checkbox" id="cb-net4"><label for="cb-net4">When would you use async/await versus a synchronous call in an API controller?<span class="diff-badge diff-easy">Easy</span></label></div>
+          </div>
+        </details>
+
+        <details class="qcat" data-cat="az">
+          <summary>Cloud & Azure</summary>
+          <div class="qlist">
+            <div class="qitem" data-id="az1"><input type="checkbox" id="cb-az1"><label for="cb-az1">How would you design a CI/CD pipeline for a multi-service Azure deployment?<span class="diff-badge diff-medium">Medium</span></label></div>
+            <div class="qitem" data-id="az2"><input type="checkbox" id="cb-az2"><label for="cb-az2">Describe how you've used observability tooling to catch a regression before it paged anyone.<span class="diff-badge diff-medium">Medium</span></label></div>
+            <div class="qitem" data-id="az3"><input type="checkbox" id="cb-az3"><label for="cb-az3">What's your strategy for setting and defending an SLO with a product team?<span class="diff-badge diff-medium">Medium</span></label></div>
+            <div class="qitem" data-id="az4"><input type="checkbox" id="cb-az4"><label for="cb-az4">How do you approach load balancing across regions during a partial outage?<span class="diff-badge diff-hard">Hard</span></label></div>
+          </div>
+        </details>
+
+        <details class="qcat" data-cat="ai">
+          <summary>AI & agentic systems</summary>
+          <div class="qlist">
+            <div class="qitem" data-id="ai1"><input type="checkbox" id="cb-ai1"><label for="cb-ai1">When does a RAG pipeline beat fine-tuning, and when is it the wrong tool?<span class="diff-badge diff-medium">Medium</span></label></div>
+            <div class="qitem" data-id="ai2"><input type="checkbox" id="cb-ai2"><label for="cb-ai2">How would you design an agent's tool permissions so it can't take an unsafe action?<span class="diff-badge diff-hard">Hard</span></label></div>
+            <div class="qitem" data-id="ai3"><input type="checkbox" id="cb-ai3"><label for="cb-ai3">What failure modes have you seen in production agentic workflows, and how did you catch them?<span class="diff-badge diff-hard">Hard</span></label></div>
+            <div class="qitem" data-id="ai4"><input type="checkbox" id="cb-ai4"><label for="cb-ai4">How would you evaluate whether an MCP-based tool is safe to expose to an agent?<span class="diff-badge diff-medium">Medium</span></label></div>
+          </div>
+        </details>
+
+        <details class="qcat" data-cat="js">
+          <summary>JavaScript & React</summary>
+          <div class="qlist">
+            <div class="qitem" data-id="js1"><input type="checkbox" id="cb-js1"><label for="cb-js1">Explain how Redux's single store compares to React's built-in Context for state management.<span class="diff-badge diff-easy">Easy</span></label></div>
+            <div class="qitem" data-id="js2"><input type="checkbox" id="cb-js2"><label for="cb-js2">What's the difference between debouncing and throttling, and when would you use each?<span class="diff-badge diff-easy">Easy</span></label></div>
+            <div class="qitem" data-id="js3"><input type="checkbox" id="cb-js3"><label for="cb-js3">How would you structure a monorepo's React state management to avoid prop-drilling across packages?<span class="diff-badge diff-medium">Medium</span></label></div>
+          </div>
+        </details>
+
+        <details class="qcat" data-cat="db">
+          <summary>Databases</summary>
+          <div class="qlist">
+            <div class="qitem" data-id="db1"><input type="checkbox" id="cb-db1"><label for="cb-db1">When would you reach for MongoDB over a relational database, and what do you give up?<span class="diff-badge diff-medium">Medium</span></label></div>
+            <div class="qitem" data-id="db2"><input type="checkbox" id="cb-db2"><label for="cb-db2">How do you design indexes for a collection that's read-heavy versus write-heavy?<span class="diff-badge diff-medium">Medium</span></label></div>
+          </div>
+        </details>
+
+        <details class="qcat" data-cat="lead">
+          <summary>Leadership & behavioral</summary>
+          <div class="qlist">
+            <div class="qitem" data-id="lead1"><input type="checkbox" id="cb-lead1"><label for="cb-lead1">Tell me about a time you had to deliver a technical decision the team disagreed with.<span class="diff-badge diff-medium">Medium</span></label></div>
+            <div class="qitem" data-id="lead2"><input type="checkbox" id="cb-lead2"><label for="cb-lead2">How do you structure feedback for an engineer who's technically strong but missing deadlines?<span class="diff-badge diff-easy">Easy</span></label></div>
+            <div class="qitem" data-id="lead3"><input type="checkbox" id="cb-lead3"><label for="cb-lead3">Describe a cross-team dependency that could have blocked a launch. How did you resolve it?<span class="diff-badge diff-medium">Medium</span></label></div>
+            <div class="qitem" data-id="lead4"><input type="checkbox" id="cb-lead4"><label for="cb-lead4">How do you decide when to grow a team versus redistribute existing headcount?<span class="diff-badge diff-hard">Hard</span></label></div>
+          </div>
+        </details>
+      </div>
+    </section>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="page-contact" class="page wrap">
+    <section class="block" style="padding-top:50px;">
+      <div class="section-head"><span class="section-num">05</span><h2 class="section-title">Contact</h2></div>
+      <div class="contact-card">
+        <h2>Let's talk.</h2>
+        <div class="contact-links">
+          <a href="mailto:jogendrasingh038@gmail.com">jogendrasingh038@gmail.com</a>
+          <a href="tel:+918103058428">+91 81030 58428</a>
+          <a href="https://www.linkedin.com/in/jogendrasinghgurjar/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+    </section>
+  </section>
+
+</main>
+
+<footer class="sitefoot">Jogendra Singh Gurjar — India</footer>
+
+<script>
+(function(){
+  // ---------- Theme toggle ----------
+  var root = document.documentElement;
+  var toggleBtn = document.getElementById('themeToggle');
+  function applyIcon(){
+    var t = root.getAttribute('data-theme');
+    var isDark = t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    toggleBtn.textContent = isDark ? '☀️' : '🌙';
+  }
+  try{
+    var saved = localStorage.getItem('jsg-theme');
+    if(saved === 'light' || saved === 'dark'){ root.setAttribute('data-theme', saved); }
+  }catch(e){}
+  applyIcon();
+  toggleBtn.addEventListener('click', function(){
+    var current = root.getAttribute('data-theme');
+    var isDark = current === 'dark' || (!current && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try{ localStorage.setItem('jsg-theme', next); }catch(e){}
+    applyIcon();
+  });
+
+  // ---------- Multi-page routing ----------
+  var pages = ['home','profile','sessions','writing','prep','contact'];
+  var navBtns = document.querySelectorAll('.navlink');
+  var navLinksEl = document.getElementById('navLinks');
+  function showPage(id){
+    if(pages.indexOf(id) === -1){ id = 'home'; }
+    pages.forEach(function(p){
+      var el = document.getElementById('page-' + p);
+      if(el){ el.classList.toggle('active', p === id); }
+    });
+    navBtns.forEach(function(b){
+      b.setAttribute('aria-current', b.getAttribute('data-page') === id ? 'page' : 'false');
+    });
+    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+    navLinksEl.classList.remove('open');
+  }
+  navBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      var id = b.getAttribute('data-page');
+      location.hash = id;
+      showPage(id);
+    });
+  });
+  document.querySelectorAll('[data-page-link]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var id = b.getAttribute('data-page-link');
+      location.hash = id;
+      showPage(id);
+    });
+  });
+  window.addEventListener('hashchange', function(){
+    showPage(location.hash.replace('#',''));
+  });
+  document.getElementById('navBurger').addEventListener('click', function(){
+    navLinksEl.classList.toggle('open');
+  });
+  showPage(location.hash ? location.hash.replace('#','') : 'home');
+
+  // ---------- Role explorer (Profile page) ----------
+  var roleNodes = document.querySelectorAll('.role-node');
+  var rolePanels = document.querySelectorAll('.role-panel');
+  roleNodes.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var key = btn.getAttribute('data-role');
+      roleNodes.forEach(function(n){ n.setAttribute('aria-selected', n === btn ? 'true' : 'false'); });
+      rolePanels.forEach(function(p){ p.classList.toggle('active', p.getAttribute('data-panel') === key); });
+    });
+  });
+
+  // ---------- Stat counters ----------
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var counters = document.querySelectorAll('.stat .num');
+  function animateCounters(){
+    counters.forEach(function(el){
+      var target = parseFloat(el.getAttribute('data-count'));
+      var suffix = el.getAttribute('data-suffix') || '';
+      var isDecimal = target % 1 !== 0;
+      if(reduceMotion){ el.textContent = target + suffix; return; }
+      var start = 0; var duration = 1200; var startTime = null;
+      function step(ts){
+        if(!startTime){ startTime = ts; }
+        var progress = Math.min((ts - startTime) / duration, 1);
+        var value = start + (target - start) * progress;
+        el.textContent = (isDecimal ? value.toFixed(2) : Math.round(value)) + suffix;
+        if(progress < 1){ requestAnimationFrame(step); }
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  var statStrip = document.querySelector('.stat-strip');
+  if(statStrip){
+    var counted = false;
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting && !counted){ counted = true; animateCounters(); }
+      });
+    }, { threshold: 0.4 });
+    obs.observe(statStrip);
+  }
+
+  // ---------- Network canvas ----------
+  var canvas = document.getElementById('netcanvas');
+  if(canvas){
+    var ctx = canvas.getContext('2d');
+    var wrap = canvas.parentElement;
+    var particles = [];
+    var W, H;
+    function getColor(varName){
+      return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+    }
+    function resize(){
+      W = canvas.width = wrap.clientWidth;
+      H = canvas.height = wrap.clientHeight;
+    }
+    function initParticles(){
+      particles = [];
+      var count = Math.min(46, Math.floor(W / 22));
+      for(var i=0;i<count;i++){
+        particles.push({
+          x: Math.random()*W, y: Math.random()*H,
+          vx: (Math.random()-0.5)*0.35, vy: (Math.random()-0.5)*0.35
+        });
+      }
+    }
+    function drawFrame(){
+      ctx.clearRect(0,0,W,H);
+      var line = getColor('--line-strong');
+      var node = getColor('--accent2');
+      particles.forEach(function(p){
+        p.x += p.vx; p.y += p.vy;
+        if(p.x < 0 || p.x > W){ p.vx *= -1; }
+        if(p.y < 0 || p.y > H){ p.vy *= -1; }
+        if(typeof heroMouse !== 'undefined' && heroMouse.active){
+          var hdx = p.x-heroMouse.x, hdy = p.y-heroMouse.y;
+          var hdist = Math.sqrt(hdx*hdx+hdy*hdy);
+          if(hdist < 120 && hdist > 0.01){
+            var hf = (120-hdist)/120*0.8;
+            p.x += (hdx/hdist)*hf; p.y += (hdy/hdist)*hf;
+          }
+        }
+      });
+      for(var i=0;i<particles.length;i++){
+        for(var j=i+1;j<particles.length;j++){
+          var dx = particles[i].x - particles[j].x;
+          var dy = particles[i].y - particles[j].y;
+          var dist = Math.sqrt(dx*dx+dy*dy);
+          if(dist < 110){
+            ctx.strokeStyle = line;
+            ctx.globalAlpha = 1 - dist/110;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      ctx.globalAlpha = 0.9;
+      particles.forEach(function(p){
+        ctx.fillStyle = node;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.8, 0, Math.PI*2);
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+    }
+    function loop(){
+      drawFrame();
+      if(!reduceMotion){ requestAnimationFrame(loop); }
+    }
+    resize(); initParticles();
+    if(reduceMotion){ drawFrame(); }
+    else { loop(); }
+    window.addEventListener('resize', function(){ resize(); initParticles(); });
+  }
+
+  // ---------- Razorpay payment buttons (fill in once the account exists) ----------
+  // Get each ID from Razorpay Dashboard → Payment Pages/Buttons → copy "Payment Button ID" (looks like "pl_XXXXXXXXXXXX")
+  var RAZORPAY_BUTTON_IDS = {
+    mentorship: "",
+    designReview: "",
+    aiConsult: ""
+  };
+  document.querySelectorAll('.pay-btn').forEach(function(btn){
+    var key = btn.getAttribute('data-session');
+    var buttonId = RAZORPAY_BUTTON_IDS[key];
+    var badge = document.querySelector('[data-badge="' + key + '"]');
+    var container = document.querySelector('[data-rzp-container="' + key + '"]');
+    if(buttonId && container){
+      btn.style.display = 'none';
+      var form = document.createElement('form');
+      var script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+      script.setAttribute('data-payment_button_id', buttonId);
+      script.async = true;
+      form.appendChild(script);
+      container.appendChild(form);
+      if(badge){ badge.textContent = 'Secure checkout via Razorpay — UPI, cards & netbanking'; }
+    }
+  });
+
+  // ---------- Writing: tag filter ----------
+  var tagPills = document.querySelectorAll('#tagFilterRow .tag-pill');
+  var postEls = document.querySelectorAll('#postsList .post');
+  tagPills.forEach(function(pill){
+    pill.addEventListener('click', function(){
+      tagPills.forEach(function(p){ p.setAttribute('aria-pressed', p === pill ? 'true' : 'false'); });
+      var tag = pill.getAttribute('data-tag');
+      postEls.forEach(function(post){
+        var tags = (post.getAttribute('data-tags') || '').split(' ');
+        post.classList.toggle('hidden', tag !== 'all' && tags.indexOf(tag) === -1);
+      });
+    });
+  });
+
+  // ---------- Interview prep: search, category filter, reviewed tracking, shuffle, expand-all ----------
+  var prepSearch = document.getElementById('prepSearch');
+  var prepCatRow = document.getElementById('prepCatRow');
+  var prepUnreviewedOnly = document.getElementById('prepUnreviewedOnly');
+  var prepProgressBar = document.getElementById('prepProgressBar');
+  var prepProgressText = document.getElementById('prepProgressText');
+  var prepExpandAll = document.getElementById('prepExpandAll');
+  var prepShuffle = document.getElementById('prepShuffle');
+  var allQItems = document.querySelectorAll('.qitem');
+  var allQCats = document.querySelectorAll('#prepCategories .qcat');
+  var activeCat = 'all';
+
+  var reviewed = {};
+  try{
+    var savedReviewed = localStorage.getItem('jsg-prep-reviewed');
+    if(savedReviewed){ reviewed = JSON.parse(savedReviewed); }
+  }catch(e){}
+
+  function saveReviewed(){
+    try{ localStorage.setItem('jsg-prep-reviewed', JSON.stringify(reviewed)); }catch(e){}
+  }
+  function applyReviewedState(){
+    allQItems.forEach(function(item){
+      var id = item.getAttribute('data-id');
+      var cb = item.querySelector('input[type="checkbox"]');
+      var isReviewed = !!reviewed[id];
+      cb.checked = isReviewed;
+      item.classList.toggle('reviewed', isReviewed);
+    });
+    updateProgress();
+  }
+  function updateProgress(){
+    var total = allQItems.length;
+    var done = Object.keys(reviewed).filter(function(k){ return reviewed[k]; }).length;
+    var pct = total ? Math.round((done/total)*100) : 0;
+    prepProgressBar.style.width = pct + '%';
+    prepProgressText.textContent = done + ' of ' + total + ' reviewed';
+  }
+  allQItems.forEach(function(item){
+    var id = item.getAttribute('data-id');
+    var cb = item.querySelector('input[type="checkbox"]');
+    cb.addEventListener('change', function(){
+      reviewed[id] = cb.checked;
+      item.classList.toggle('reviewed', cb.checked);
+      saveReviewed();
+      updateProgress();
+      applyFilters();
+    });
+  });
+
+  function applyFilters(){
+    var query = (prepSearch.value || '').toLowerCase().trim();
+    var unreviewedOnly = prepUnreviewedOnly.checked;
+    allQCats.forEach(function(cat){
+      var catKey = cat.getAttribute('data-cat');
+      var catMatches = (activeCat === 'all' || activeCat === catKey);
+      var anyVisible = false;
+      cat.querySelectorAll('.qitem').forEach(function(item){
+        var id = item.getAttribute('data-id');
+        var text = item.querySelector('label').textContent.toLowerCase();
+        var textMatches = !query || text.indexOf(query) !== -1;
+        var reviewMatches = !unreviewedOnly || !reviewed[id];
+        var show = catMatches && textMatches && reviewMatches;
+        item.classList.toggle('item-hidden', !show);
+        if(show){ anyVisible = true; }
+      });
+      cat.classList.toggle('cat-hidden', !anyVisible);
+      if(query && anyVisible){ cat.setAttribute('open', ''); }
+    });
+  }
+  prepSearch.addEventListener('input', applyFilters);
+  prepUnreviewedOnly.addEventListener('change', applyFilters);
+  prepCatRow.querySelectorAll('.tag-pill').forEach(function(pill){
+    pill.addEventListener('click', function(){
+      prepCatRow.querySelectorAll('.tag-pill').forEach(function(p){ p.setAttribute('aria-pressed', p === pill ? 'true' : 'false'); });
+      activeCat = pill.getAttribute('data-cat');
+      applyFilters();
+    });
+  });
+  var expanded = false;
+  prepExpandAll.addEventListener('click', function(){
+    expanded = !expanded;
+    allQCats.forEach(function(cat){ if(expanded){ cat.setAttribute('open',''); } else { cat.removeAttribute('open'); } });
+    prepExpandAll.textContent = expanded ? 'Collapse all' : 'Expand all';
+  });
+  prepShuffle.addEventListener('click', function(){
+    var pool = Array.prototype.filter.call(allQItems, function(item){
+      return !item.classList.contains('item-hidden') && !reviewed[item.getAttribute('data-id')];
+    });
+    if(pool.length === 0){ pool = Array.prototype.slice.call(allQItems); }
+    if(pool.length === 0){ return; }
+    var pick = pool[Math.floor(Math.random() * pool.length)];
+    var parentCat = pick.closest('.qcat');
+    if(parentCat){ parentCat.setAttribute('open',''); parentCat.classList.remove('flash'); void parentCat.offsetWidth; parentCat.classList.add('flash'); }
+    pick.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+  });
+  applyReviewedState();
+  applyFilters();
+
+  // ---------- Profile: mouse-reactive animated background ----------
+  var profilePage = document.getElementById('page-profile');
+  var profileCanvas = document.getElementById('profilecanvas');
+  var profileSpotlight = document.getElementById('profileSpotlight');
+  if(profilePage && profileCanvas){
+    var pctx = profileCanvas.getContext('2d');
+    var pW, pH, pParticles = [];
+    var mouse = { x: -9999, y: -9999, active:false };
+    function pResize(){
+      pW = profileCanvas.width = profilePage.scrollWidth;
+      pH = profileCanvas.height = profilePage.scrollHeight;
+    }
+    function pInit(){
+      pParticles = [];
+      var count = Math.min(70, Math.floor((pW*pH) / 26000));
+      for(var i=0;i<count;i++){
+        pParticles.push({ x: Math.random()*pW, y: Math.random()*pH, vx:(Math.random()-0.5)*0.25, vy:(Math.random()-0.5)*0.25 });
+      }
+    }
+    function pColor(varName){ return getComputedStyle(document.documentElement).getPropertyValue(varName).trim(); }
+    function pFrame(){
+      pctx.clearRect(0,0,pW,pH);
+      var line = pColor('--line-strong');
+      var node = pColor('--accent2');
+      pParticles.forEach(function(p){
+        p.x += p.vx; p.y += p.vy;
+        if(p.x<0||p.x>pW){ p.vx*=-1; }
+        if(p.y<0||p.y>pH){ p.vy*=-1; }
+        if(mouse.active){
+          var dx = p.x-mouse.x, dy = p.y-mouse.y;
+          var dist = Math.sqrt(dx*dx+dy*dy);
+          if(dist < 140 && dist > 0.01){
+            var force = (140-dist)/140*0.6;
+            p.x += (dx/dist)*force; p.y += (dy/dist)*force;
+          }
+        }
+      });
+      for(var i=0;i<pParticles.length;i++){
+        for(var j=i+1;j<pParticles.length;j++){
+          var dx2 = pParticles[i].x-pParticles[j].x, dy2 = pParticles[i].y-pParticles[j].y;
+          var d = Math.sqrt(dx2*dx2+dy2*dy2);
+          if(d < 95){
+            pctx.strokeStyle = line; pctx.globalAlpha = 1-d/95; pctx.lineWidth = 1;
+            pctx.beginPath(); pctx.moveTo(pParticles[i].x,pParticles[i].y); pctx.lineTo(pParticles[j].x,pParticles[j].y); pctx.stroke();
+          }
+        }
+        if(mouse.active){
+          var dxm = pParticles[i].x-mouse.x, dym = pParticles[i].y-mouse.y;
+          var dm = Math.sqrt(dxm*dxm+dym*dym);
+          if(dm < 160){
+            pctx.strokeStyle = node; pctx.globalAlpha = (1-dm/160)*0.5; pctx.lineWidth = 1;
+            pctx.beginPath(); pctx.moveTo(pParticles[i].x,pParticles[i].y); pctx.lineTo(mouse.x,mouse.y); pctx.stroke();
+          }
+        }
+      }
+      pctx.globalAlpha = 0.85;
+      pParticles.forEach(function(p){ pctx.fillStyle = node; pctx.beginPath(); pctx.arc(p.x,p.y,1.6,0,Math.PI*2); pctx.fill(); });
+      pctx.globalAlpha = 1;
+    }
+    function pLoop(){
+      if(document.getElementById('page-profile').classList.contains('active')){ pFrame(); }
+      if(!reduceMotion){ requestAnimationFrame(pLoop); }
+    }
+    pResize(); pInit();
+    if(reduceMotion){ pFrame(); } else { pLoop(); }
+    window.addEventListener('resize', function(){ pResize(); pInit(); });
+    profilePage.addEventListener('mousemove', function(e){
+      var rect = profilePage.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top + profilePage.scrollTop;
+      mouse.active = true;
+      if(profileSpotlight){
+        profileSpotlight.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+        profileSpotlight.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+      }
+    });
+    profilePage.addEventListener('mouseleave', function(){ mouse.active = false; });
+  }
+
+  // ---------- Home hero canvas: mouse reactivity ----------
+  if(canvas){
+    var heroMouse = { x:-9999, y:-9999, active:false };
+    canvas.parentElement.addEventListener('mousemove', function(e){
+      var r = canvas.getBoundingClientRect();
+      heroMouse.x = e.clientX - r.left; heroMouse.y = e.clientY - r.top; heroMouse.active = true;
+    });
+    canvas.parentElement.addEventListener('mouseleave', function(){ heroMouse.active = false; });
+  }
+
+  // ---------- Tilt cards ----------
+  if(!reduceMotion && window.matchMedia('(hover: hover)').matches){
+    document.querySelectorAll('.tilt-card').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = 'rotateX(' + (-py*8) + 'deg) rotateY(' + (px*8) + 'deg) translateY(-2px)';
+      });
+      card.addEventListener('mouseleave', function(){ card.style.transform = 'rotateX(0) rotateY(0)'; });
+    });
+  }
+
+  // ---------- Sign in / role switcher ----------
+  var authArea = document.getElementById('authArea');
+  var authModal = document.getElementById('authModal');
+  var authRole = document.getElementById('authRole');
+  var authPassField = document.getElementById('authPassField');
+  var authError = document.getElementById('authError');
+  var ADMIN_PASSCODE = "jogendra-admin"; // demo-only gate, not secure — see note in chat
+
+  function renderAuthArea(session){
+    if(session && session.name){
+      authArea.innerHTML =
+        '<div class="auth-status">' +
+          '<span>' + session.name.replace(/</g,'&lt;') + '</span>' +
+          '<span class="role-badge' + (session.role==='admin' ? ' admin' : '') + '">' + session.role + '</span>' +
+          '<button class="auth-btn" id="signOutBtn">Sign out</button>' +
+        '</div>';
+      document.getElementById('signOutBtn').addEventListener('click', function(){
+        try{ sessionStorage.removeItem('jsg-auth'); }catch(e){}
+        renderAuthArea(null);
+      });
+    } else {
+      authArea.innerHTML = '<button class="auth-btn" id="signInBtn">Sign in</button>';
+      document.getElementById('signInBtn').addEventListener('click', openAuthModal);
+    }
+  }
+  function openAuthModal(){
+    authError.classList.remove('show');
+    authModal.classList.add('open');
+  }
+  function closeAuthModal(){ authModal.classList.remove('open'); }
+  authRole.addEventListener('change', function(){
+    authPassField.style.display = authRole.value === 'admin' ? 'block' : 'none';
+  });
+  document.getElementById('authCancel').addEventListener('click', closeAuthModal);
+  document.getElementById('authSubmit').addEventListener('click', function(){
+    var name = document.getElementById('authName').value.trim() || 'Guest';
+    var role = authRole.value;
+    if(role === 'admin'){
+      var pass = document.getElementById('authPass').value;
+      if(pass !== ADMIN_PASSCODE){
+        authError.classList.add('show');
+        return;
+      }
+    }
+    var session = { name: name, role: role };
+    try{ sessionStorage.setItem('jsg-auth', JSON.stringify(session)); }catch(e){}
+    renderAuthArea(session);
+    closeAuthModal();
+  });
+  authModal.addEventListener('click', function(e){ if(e.target === authModal){ closeAuthModal(); } });
+  (function initAuth(){
+    var existing = null;
+    try{ var raw = sessionStorage.getItem('jsg-auth'); if(raw){ existing = JSON.parse(raw); } }catch(e){}
+    renderAuthArea(existing);
+  })();
+})();
+</script>
+
+</body>
+</html>
